@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | MediumMinds</title>
+    <meta name="description"
+        content="Join MediumMinds and help us build the digital future. Explore our job openings and career opportunities.">
+    <link rel="icon" type="image/png" href="./public/logos/favicon.png?v=2">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css?v=2">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#FF5E2C',
+                            hover: '#e04c1f'
+                        },
+                        dark: {
+                            bg: '#0f0f11',
+                            card: '#1a1a1c',
+                            border: '#262626',
+                            text: '#f3f4f6',
+                            muted: '#9ca3af'
+                        },
+                        light: {
+                            bg: '#ffffff',
+                            card: '#f9fafb',
+                            border: '#e5e7eb',
+                            text: '#111827',
+                            muted: '#6b7280'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #FF5E2C;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FF5E2C;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav-link:hover {
+            color: #FF5E2C;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-input {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: #111827;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .dark .form-input {
+            background-color: #0f0f11;
+            border-color: #262626;
+            color: #f3f4f6;
+        }
+
+        .form-input:focus {
+            border-color: #FF5E2C;
+            box-shadow: 0 0 0 1px #FF5E2C;
+        }
+
+        .btn-form-submit {
+            width: 100%;
+            background-color: #FF5E2C;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-form-submit:hover {
+            background-color: #e04c1f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px -2px rgba(255, 94, 44, 0.3);
+        }
+
+        .job-card {
+            transition: all 0.3s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 94, 44, 0.1);
+            border-color: #FF5E2C;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="header"
+        class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-light-bg dark:bg-dark-bg shadow-sm">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img id="logo-img" src="./public/logos/darklogo.png" alt="MediumMinds Logo"
+                    class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-105">
+                <span class="font-bold text-xl tracking-tight"></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="divisions.html" class="nav-link">Divisions</a>
+                <a href="index.html#team" class="nav-link">Team</a>
+                <a href="index.html#work" class="nav-link">Work</a>
+                <a href="careers.html" class="nav-link !text-[#FF5E2C]">Careers</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+
+                <a href="index.html#contact" class="btn-primary">Get Started</a>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-300">
+                    <i id="theme-icon" class="fas fa-sun text-lg"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border shadow-lg py-4 flex flex-col items-center gap-4 transition-all">
+            <a href="index.html#home" class="mobile-nav-link">Home</a>
+            <a href="index.html#about" class="mobile-nav-link">About</a>
+            <a href="divisions.html" class="mobile-nav-link">Divisions</a>
+            <a href="index.html#team" class="mobile-nav-link">Team</a>
+            <a href="index.html#work" class="mobile-nav-link">Work</a>
+            <a href="careers.html" class="mobile-nav-link text-primary">Careers</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="index.html#contact" class="btn-primary w-11/12">Get Started</a>
+            <button id="mobile-theme-toggle"
+                class="p-2 w-full flex justify-center border-t border-light-border dark:border-dark-border mt-2 pt-4">
+                <i id="mobile-theme-icon" class="fas fa-sun text-lg"></i> Switch Theme
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section
+        class="relative pt-32 pb-20 bg-light-card dark:bg-dark-card border-b border-light-border dark:border-dark-border">
+        <div class="container mx-auto px-6 md:px-12 text-center reveal">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Join Our Team</h1>
+            <p class="text-lg text-light-muted dark:text-dark-muted max-w-3xl mx-auto">
+                At MediumMinds, we are always looking for passionate, driven, and creative individuals to help us shape
+                the future of digital innovation.
+            </p>
+        </div>
+    </section>
+
+    <!-- Job Listings Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 md:px-12 max-w-5xl">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-bold mb-4">Current Openings</h2>
+                <p class="text-light-muted dark:text-dark-muted">Find the perfect role that matches your skills.</p>
+            </div>
+
+            <div class="space-y-6">
+
+                <!-- Job Card 1 -->
+                <div
+                    class="job-card bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl p-8 reveal">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div class="flex-1">
+                            <div class="flex gap-3 mb-2 flex-wrap">
+                                <span
+                                    class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full">Full-Time</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold px-3 py-1 rounded-full">Remote
+                                    / Hybrid</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">MERN Stack Developer</h3>
+                            <p class="text-light-muted dark:text-dark-muted mb-4 text-sm leading-relaxed">
+                                We are looking for an experienced Full-Stack Developer proficient in MongoDB,
+                                Express.js, React, and Node.js to build dynamic, high-performance web applications.
+                            </p>
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                                <p><i class="fas fa-tools text-primary w-5"></i> <strong>Skills:</strong> React,
+                                    Node.js, MongoDB, Express</p>
+                                <p><i class="fas fa-briefcase text-primary w-5"></i> <strong>Experience:</strong> 2+
+                                    Years</p>
+                                <p><i class="fas fa-map-marker-alt text-primary w-5"></i> <strong>Location:</strong>
+                                    Peshawar / Remote</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <button onclick="openApplyModal('MERN Stack Developer')"
+                                class="btn-primary w-full md:w-auto px-8 py-3 whitespace-nowrap">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div
+                    class="job-card bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl p-8 reveal">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div class="flex-1">
+                            <div class="flex gap-3 mb-2 flex-wrap">
+                                <span
+                                    class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full">Full-Time</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold px-3 py-1 rounded-full">On-Site</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">UI/UX Designer</h3>
+                            <p class="text-light-muted dark:text-dark-muted mb-4 text-sm leading-relaxed">
+                                Join our Studio division to create intuitive, engaging user interfaces and stunning
+                                visual experiences across web and mobile platforms.
+                            </p>
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                                <p><i class="fas fa-tools text-primary w-5"></i> <strong>Skills:</strong> Figma, Adobe
+                                    XD, Prototyping</p>
+                                <p><i class="fas fa-briefcase text-primary w-5"></i> <strong>Experience:</strong> 1-3
+                                    Years</p>
+                                <p><i class="fas fa-map-marker-alt text-primary w-5"></i> <strong>Location:</strong>
+                                    Islamabad</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <button onclick="openApplyModal('UI/UX Designer')"
+                                class="btn-primary w-full md:w-auto px-8 py-3 whitespace-nowrap">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div
+                    class="job-card bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-xl p-8 reveal">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div class="flex-1">
+                            <div class="flex gap-3 mb-2 flex-wrap">
+                                <span
+                                    class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full">Contract</span>
+                                <span
+                                    class="bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-bold px-3 py-1 rounded-full">Remote</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Digital Marketing Specialist</h3>
+                            <p class="text-light-muted dark:text-dark-muted mb-4 text-sm leading-relaxed">
+                                We need a data-driven marketer to handle SEO, social media ad campaigns, and brand
+                                visibility for our growing list of tech clients.
+                            </p>
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+                                <p><i class="fas fa-tools text-primary w-5"></i> <strong>Skills:</strong> SEO, Meta Ads,
+                                    Google Analytics</p>
+                                <p><i class="fas fa-briefcase text-primary w-5"></i> <strong>Experience:</strong> 2+
+                                    Years</p>
+                                <p><i class="fas fa-map-marker-alt text-primary w-5"></i> <strong>Location:</strong>
+                                    Remote</p>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-auto">
+                            <button onclick="openApplyModal('Digital Marketing Specialist')"
+                                class="btn-primary w-full md:w-auto px-8 py-3 whitespace-nowrap">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light-card dark:bg-dark-card border-t border-light-border dark:border-dark-border pt-16 pb-8">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img id="footer-logo-img" src="./public/logos/darklogo.png" alt="MediumMinds Logo" class="h-8">
+                        <span class="font-bold text-xl tracking-tight">MediumMinds</span>
+                    </div>
+                    <p class="text-light-muted dark:text-dark-muted max-w-sm">
+                        Connecting Ideas, Technology and Creative Minds to build the digital future.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-light-muted dark:text-dark-muted">
+                        <li><a href="index.html#home" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="index.html#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="divisions.html" class="hover:text-primary transition-colors">Divisions</a></li>
+                        <li><a href="index.html#work" class="hover:text-primary transition-colors">Work</a></li>
+                        <li><a href="careers.html" class="hover:text-primary transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-light-muted dark:text-dark-muted">
+                        <li><a href="mailto:info@mediumminds.com">info@mediumminds.com</a></li>
+                        <li>+92 312 9424445</li>
+                        <li class="flex gap-4 mt-4">
+                            <a href="#" class="text-xl hover:text-primary transition-colors"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/mediumminds/" target="_blank"
+                                class="text-xl hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/medium.minds?igsh=OHZqdnRiYXBmMjlx&utm_source"
+                                target="_blank" class="text-xl hover:text-primary transition-colors"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="text-center text-light-muted dark:text-dark-muted text-sm pt-8 border-t border-light-border dark:border-dark-border">
+                &copy; <span id="year"></span> MediumMinds. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Apply Modal -->
+    <div id="apply-modal"
+        class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div
+            class="bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-2xl p-6 md:p-8 w-full max-w-3xl relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeApplyModal()"
+                class="absolute top-4 right-4 text-2xl text-light-muted dark:text-dark-muted hover:text-primary transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <h2 class="text-2xl md:text-3xl font-bold mb-2">Apply for <span id="modal-position-name"
+                    class="text-primary">Position</span></h2>
+            <p class="text-light-muted dark:text-dark-muted mb-6 text-sm">Please fill out the form below to submit your
+                application.</p>
+
+            <form id="careerForm" enctype="multipart/form-data" class="space-y-4">
+                <input type="hidden" id="career-position" name="position" value="">
+
+                <div id="career-msg" class="hidden p-4 rounded-md mb-4 font-medium text-sm"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Full Name
+                            *</label>
+                        <input type="text" name="full_name" required class="form-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Email
+                            Address *</label>
+                        <input type="email" name="email" required class="form-input">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Phone
+                            Number *</label>
+                        <input type="tel" name="phone" required class="form-input">
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">City/Country
+                            *</label>
+                        <input type="text" name="city" required class="form-input"
+                            placeholder="e.g. Peshawar, Pakistan">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Highest
+                            Education *</label>
+                        <input type="text" name="education" required class="form-input"
+                            placeholder="e.g. BS Computer Science">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Years of
+                            Experience *</label>
+                        <select name="experience" required class="form-input">
+                            <option value="">Select Experience</option>
+                            <option value="Fresher / Intern">Fresher / Intern</option>
+                            <option value="1-3 Years">1-3 Years</option>
+                            <option value="3-5 Years">3-5 Years</option>
+                            <option value="5+ Years">5+ Years</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Key Skills
+                        *</label>
+                    <input type="text" name="skills" required placeholder="e.g., React, Node.js, PHP, Figma"
+                        class="form-input">
+                </div>
+
+                <div>
+                    <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Cover Letter /
+                        Message</label>
+                    <textarea name="message" rows="4" class="form-input"
+                        placeholder="Tell us why you are a great fit..."></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm text-light-muted dark:text-dark-muted mb-1 font-semibold">Upload
+                        CV/Resume (PDF/DOC/DOCX) *</label>
+                    <input type="file" name="resume" accept=".pdf,.doc,.docx" required
+                        class="form-input !p-2 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20">
+                    <p class="text-xs text-light-muted dark:text-dark-muted mt-1">Maximum file size: 5MB</p>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="submit-career-btn" class="btn-form-submit w-full md:w-auto px-10">Submit
+                        Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('apply-modal');
+        const posNameEl = document.getElementById('modal-position-name');
+        const posInput = document.getElementById('career-position');
+        const form = document.getElementById('careerForm');
+        const msgDiv = document.getElementById('career-msg');
+        const submitBtn = document.getElementById('submit-career-btn');
+
+        function openApplyModal(positionName) {
+            posNameEl.textContent = positionName;
+            posInput.value = positionName;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeApplyModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+            form.reset();
+            msgDiv.classList.add('hidden');
+        }
+
+        // Close on clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeApplyModal();
+            }
+        });
+
+        // Form Submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // UI Feedback
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            msgDiv.classList.add('hidden');
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('./backend/submit_career.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                msgDiv.classList.remove('hidden', 'bg-red-100', 'text-red-700', 'dark:bg-red-900/30', 'dark:text-red-400');
+                if (response.ok && result.status === 'success') {
+                    msgDiv.classList.add('bg-green-100', 'text-green-700', 'dark:bg-green-900/30', 'dark:text-green-400');
+                    msgDiv.textContent = result.message || "Application submitted successfully!";
+                    form.reset();
+                    // Close after 3 seconds on success
+                    setTimeout(() => closeApplyModal(), 3000);
+                } else {
+                    msgDiv.classList.add('bg-red-100', 'text-red-700', 'dark:bg-red-900/30', 'dark:text-red-400');
+                    msgDiv.textContent = result.message || "Failed to submit application.";
+                }
+            } catch (error) {
+                msgDiv.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'dark:bg-green-900/30', 'dark:text-green-400');
+                msgDiv.classList.add('bg-red-100', 'text-red-700', 'dark:bg-red-900/30', 'dark:text-red-400');
+                msgDiv.textContent = "Network error. Please try again later.";
+                console.error('Error:', error);
+            } finally {
+                submitBtn.textContent = 'Submit Application';
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body>
+
+</html>

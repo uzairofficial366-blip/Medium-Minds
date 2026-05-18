@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Divisions | MediumMinds</title>
+    <meta name="description"
+        content="Explore the five detailed divisions of MediumMinds: Studio, Solutions, Technologies, Creative Lab, and Trainings.">
+    <link id="favicon" rel="icon" type="image/png" href="./public/logos/favicon.png?v=2">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=2">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#FF5E2C',
+                            hover: '#e04c1f'
+                        },
+                        dark: {
+                            bg: '#0f0f11',
+                            card: '#1a1a1c',
+                            border: '#262626',
+                            text: '#f3f4f6',
+                            muted: '#9ca3af'
+                        },
+                        light: {
+                            bg: '#ffffff',
+                            card: '#f9fafb',
+                            border: '#e5e7eb',
+                            text: '#111827',
+                            muted: '#6b7280'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        .btn-primary:hover {
+            background-color: #e04c1f;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 94, 44, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #FF5E2C;
+            color: #FF5E2C;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FF5E2C;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #FF5E2C;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FF5E2C;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav-link:hover {
+            color: #FF5E2C;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .division-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .division-feature-icon {
+            color: #FF5E2C;
+            font-size: 1.25rem;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="header"
+        class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-light-bg dark:bg-dark-bg shadow-sm">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <img id="logo-img" src="./public/logos/darklogo.png" alt="MediumMinds Logo"
+                    class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-105">
+                <span class="font-bold text-xl tracking-tight"></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="divisions.html" class="nav-link !text-[#FF5E2C]">Divisions</a>
+                <a href="index.html#team" class="nav-link">Team</a>
+                <a href="index.html#work" class="nav-link">Work</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+
+                <a href="index.html#contact" class="btn-primary">Get Started</a>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-300">
+                    <i id="theme-icon" class="fas fa-sun text-lg"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border shadow-lg py-4 flex flex-col items-center gap-4 transition-all">
+            <a href="index.html#home" class="mobile-nav-link">Home</a>
+            <a href="index.html#about" class="mobile-nav-link">About</a>
+            <a href="divisions.html" class="mobile-nav-link text-primary">Divisions</a>
+            <a href="index.html#team" class="mobile-nav-link">Team</a>
+            <a href="index.html#work" class="mobile-nav-link">Work</a>
+            <a href="careers.html" class="mobile-nav-link">Careers</a>
+            <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+            <a href="index.html#contact" class="btn-primary w-11/12">Get Started</a>
+            <button id="mobile-theme-toggle"
+                class="p-2 w-full flex justify-center border-t border-light-border dark:border-dark-border mt-2 pt-4">
+                <i id="mobile-theme-icon" class="fas fa-sun text-lg"></i> Switch Theme
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section
+        class="relative pt-32 pb-20 bg-light-card dark:bg-dark-card border-b border-light-border dark:border-dark-border">
+        <div class="container mx-auto px-6 md:px-12 text-center reveal">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Detailed Divisions</h1>
+            <p class="text-lg text-light-muted dark:text-dark-muted max-w-3xl mx-auto">
+                Explore the five pillars that make up MediumMinds. From creative design to advanced AI, and professional
+                training, we cover the full spectrum of digital innovation.
+            </p>
+        </div>
+    </section>
+
+    <!-- Divisions Detail Content -->
+
+    <!-- 1. Studio -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 reveal">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">MediumMinds Studio</h2>
+                    <p class="text-light-muted dark:text-dark-muted mb-6 text-lg">
+                        Our creative powerhouse where aesthetics meet strategy. We craft compelling visual identities
+                        and design seamless user experiences that capture attention and drive engagement.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Brand Identity & Logo Design</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">UI/UX Interface Design</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Video Production & Animation</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Graphic Design & Illustration</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal" style="animation-delay: 0.2s;">
+                    <div
+                        class="rounded-2xl overflow-hidden shadow-2xl border border-light-border dark:border-dark-border aspect-video md:aspect-[4/3] lg:h-[400px] w-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,94,44,0.15)]">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop"
+                            alt="Creative Studio"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Solutions -->
+    <section class="py-20 bg-light-card dark:bg-dark-card border-y border-light-border dark:border-dark-border">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="lg:w-1/2 reveal">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">MediumMinds Solutions</h2>
+                    <p class="text-light-muted dark:text-dark-muted mb-6 text-lg">
+                        We provide data-driven strategies and comprehensive marketing campaigns that help businesses
+                        scale, reach their target audiences, and optimize their conversion rates.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Digital Marketing & SEO</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Social Media Management</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Strategic Business Consulting</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Content Strategy & Copywriting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal" style="animation-delay: 0.2s;">
+                    <div
+                        class="rounded-2xl overflow-hidden shadow-2xl border border-light-border dark:border-dark-border aspect-video md:aspect-[4/3] lg:h-[400px] w-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,94,44,0.15)]">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
+                            alt="Business Solutions"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Technologies -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 reveal">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">MediumMinds Technologies</h2>
+                    <p class="text-light-muted dark:text-dark-muted mb-6 text-lg">
+                        Our core engineering division builds robust, scalable software, dynamic websites, and advanced
+                        mobile applications using the latest tech stacks and industry best practices.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Custom Web Application Development</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">iOS & Android App Development</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">AI & Process Automation</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Cloud Infrastructure & DevOps</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal" style="animation-delay: 0.2s;">
+                    <div
+                        class="rounded-2xl overflow-hidden shadow-2xl border border-light-border dark:border-dark-border aspect-video md:aspect-[4/3] lg:h-[400px] w-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,94,44,0.15)]">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop"
+                            alt="Technology Development"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Creative Lab -->
+    <section class="py-20 bg-light-card dark:bg-dark-card border-y border-light-border dark:border-dark-border">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="lg:w-1/2 reveal">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">MediumMinds Creative Lab</h2>
+                    <p class="text-light-muted dark:text-dark-muted mb-6 text-lg">
+                        The innovation hub where we test boundaries. We experiment with emerging technologies like
+                        AR/VR, Web3, and interactive installations to find the next big breakthrough.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Research & Development (R&D)</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">AR/VR Experiences</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Prototyping Emerging Tech</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Interactive Installations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal" style="animation-delay: 0.2s;">
+                    <div
+                        class="rounded-2xl overflow-hidden shadow-2xl border border-light-border dark:border-dark-border aspect-video md:aspect-[4/3] lg:h-[400px] w-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,94,44,0.15)]">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop"
+                            alt="Creative Innovation Lab"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Trainings -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 reveal">
+                    <div
+                        class="w-16 h-16 rounded-xl bg-primary/10 text-primary flex items-center justify-center text-3xl mb-6">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">MediumMinds for Trainings</h2>
+                    <p class="text-light-muted dark:text-dark-muted mb-6 text-lg">
+                        Empowering the next generation of tech leaders. We offer comprehensive courses and workshops on
+                        the latest technologies, designed to upskill individuals and corporate teams.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Full-Stack Web Development Bootcamp</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Corporate Tech Training</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">UI/UX Design Masterclasses</span>
+                        </div>
+                        <div class="division-feature">
+                            <i class="fas fa-check-circle division-feature-icon"></i>
+                            <span class="font-medium">Digital Marketing & SEO Workshops</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 reveal" style="animation-delay: 0.2s;">
+                    <div
+                        class="rounded-2xl overflow-hidden shadow-2xl border border-light-border dark:border-dark-border aspect-video md:aspect-[4/3] lg:h-[400px] w-full group transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,94,44,0.15)]">
+                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop"
+                            alt="Tech Trainings and Workshops"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-primary text-white text-center">
+        <div class="container mx-auto px-6 md:px-12 reveal">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Ready to grow with MediumMinds?</h2>
+            <a href="index.html#contact"
+                class="inline-block bg-white text-primary font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                Contact Us Today
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light-card dark:bg-dark-card border-t border-light-border dark:border-dark-border pt-16 pb-8">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img id="footer-logo-img" src="./public/logos/darklogo.png" alt="MediumMinds Logo" class="h-8">
+                        <span class="font-bold text-xl tracking-tight">MediumMinds</span>
+                    </div>
+                    <p class="text-light-muted dark:text-dark-muted max-w-sm">
+                        Connecting Ideas, Technology and Creative Minds to build the digital future.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-light-muted dark:text-dark-muted">
+                        <li><a href="index.html#home" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="index.html#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="divisions.html" class="hover:text-primary transition-colors">Divisions</a></li>
+                        <li><a href="index.html#work" class="hover:text-primary transition-colors">Work</a></li>
+                        <li><a href="careers.html" class="hover:text-primary transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-light-muted dark:text-dark-muted">
+                        <li>info@mediumminds.com</li>
+                        <li>+92 312 9424445</li>
+                        <li class="flex gap-4 mt-4">
+                            <a href="#" class="text-xl hover:text-primary transition-colors"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/mediumminds/" target="_blank"
+                                class="text-xl hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/medium.minds?igsh=OHZqdnRiYXBmMjlx&utm_source"
+                                target="_blank" class="text-xl hover:text-primary transition-colors"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="text-center text-light-muted dark:text-dark-muted text-sm pt-8 border-t border-light-border dark:border-dark-border">
+                &copy; <span id="year"></span> MediumMinds. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

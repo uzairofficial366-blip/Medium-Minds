@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediumMinds | Connecting Ideas, Technology and Creative Minds</title>
+    <meta name="description"
+        content="MediumMinds represents a bridge between ideas, technology, and creativity, combining software development, AI, digital marketing, and creative production.">
+    <link id="favicon" rel="icon" type="image/png" href="./public/logos/favicon.png?v=2">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=2">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#FF5E2C',
+                            hover: '#e04c1f'
+                        },
+                        dark: {
+                            bg: '#0f0f11',
+                            card: '#1a1a1c',
+                            border: '#262626',
+                            text: '#f3f4f6',
+                            muted: '#9ca3af'
+                        },
+                        light: {
+                            bg: '#ffffff',
+                            card: '#f9fafb',
+                            border: '#e5e7eb',
+                            text: '#111827',
+                            muted: '#6b7280'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        /* Innovation Hub image slideshow */
+        .slide1,
+        .slide2 {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: slideFade 6s infinite;
+        }
+
+        .slide2 {
+            animation-delay: 3s;
+        }
+
+        @keyframes slideFade {
+
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            55%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .btn-primary:hover {
+            background-color: #e04c1f;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 94, 44, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #FF5E2C;
+            color: #FF5E2C;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            transition: all 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            background-color: #FF5E2C;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #FF5E2C;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -0.25rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FF5E2C;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav-link:hover {
+            color: #FF5E2C;
+        }
+
+        /* Form Inputs */
+        .form-input {
+            width: 100%;
+            background-color: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 0.25rem;
+            padding: 0.75rem 1rem;
+            color: #111827;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #FF5E2C;
+            box-shadow: 0 0 0 1px #FF5E2C;
+        }
+
+        .btn-form-submit {
+            width: 100%;
+            background-color: #111827;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        .btn-form-submit:hover {
+            background-color: #1f2937;
+            transform: scale(1.02);
+        }
+
+        /* Division Cards */
+        .division-card {
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .division-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(255, 94, 44, 0.1);
+        }
+
+        .division-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #FF5E2C;
+            transform: scaleX(0);
+            transition: transform 0.5s;
+            transform-origin: left;
+        }
+
+        .division-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            background-color: rgba(255, 94, 44, 0.1);
+            color: #FF5E2C;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .division-card:hover .card-icon {
+            background-color: #FF5E2C;
+            color: #ffffff;
+        }
+
+        /* Project Cards */
+        .project-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay>* {
+            transform: translateY(16px);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover .project-overlay>* {
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ */
+        .faq-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans antialiased overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="header" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-transparent">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <img id="logo-img" src="./public/logos/darklogo.png" alt="MediumMinds Logo"
+                    class="h-8 md:h-10 transition-transform duration-300 group-hover:scale-105">
+                <span class="font-bold text-xl tracking-tight"></span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#divisions" class="nav-link">Divisions</a>
+                <a href="#team" class="nav-link">Team</a>
+                <a href="#work" class="nav-link">Work</a>
+                <a href="careers.html" class="nav-link">Careers</a>
+                <a href="#contact" class="nav-link">Contact</a>
+
+                <a href="#contact" class="btn-primary">Get Started</a>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-full hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-300">
+                    <i id="theme-icon" class="fas fa-sun text-lg"></i>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border shadow-lg py-4 flex flex-col items-center gap-4 transition-all">
+            <a href="#home" class="mobile-nav-link">Home</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <a href="#divisions" class="mobile-nav-link">Divisions</a>
+            <a href="#team" class="mobile-nav-link">Team</a>
+            <a href="#work" class="mobile-nav-link">Work</a>
+            <a href="careers.html" class="mobile-nav-link">Careers</a>
+            <a href="#contact" class="mobile-nav-link">Contact</a>
+            <a href="#contact" class="btn-primary w-11/12 text-center">Get Started</a>
+            <button id="mobile-theme-toggle"
+                class="p-2 w-full flex justify-center border-t border-light-border dark:border-dark-border mt-2 pt-4">
+                <i id="mobile-theme-icon" class="fas fa-sun text-lg"></i> Switch Theme
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none">
+        </div>
+
+        <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight animate-slide-up"
+                style="animation-delay: 0.1s;">
+                Connecting Ideas, Technology <br class="hidden md:block" /> and <span class="text-primary">Creative
+                    Minds</span>
+            </h1>
+            <p class="text-lg md:text-xl text-light-muted dark:text-dark-muted max-w-3xl mx-auto mb-10 animate-slide-up"
+                style="animation-delay: 0.2s;">
+                We are a multi-division digital company bridging the gap between innovation and reality. From AI
+                solutions to creative production, we build the future.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-slide-up"
+                style="animation-delay: 0.3s;">
+                <a href="#divisions" class="btn-primary px-8 py-4 text-lg w-full sm:w-auto">Explore Solutions</a>
+                <a href="#work" class="btn-secondary px-8 py-4 text-lg w-full sm:w-auto">Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about"
+        class="py-20 bg-light-card dark:bg-dark-card border-y border-light-border dark:border-dark-border">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">The Meaning Behind <br /><span
+                            class="text-primary">MediumMinds</span></h2>
+                    <p class="text-light-muted dark:text-dark-muted mb-6 leading-relaxed">
+                        <strong>Medium</strong> represents our diverse domains—software development, AI automation,
+                        digital marketing, and creative production. We serve as the vital conduit bringing these
+                        disparate disciplines together.
+                    </p>
+                    <p class="text-light-muted dark:text-dark-muted leading-relaxed">
+                        <strong>Minds</strong> signifies the intelligence, human creativity, and relentless innovation
+                        driving our solutions. Together, we are architects of the digital tomorrow, creating impactful
+                        experiences that resonate.
+                    </p>
+                </div>
+                <div class="reveal delay-100 relative">
+                    <div
+                        class="relative w-full aspect-video md:aspect-[16/9] overflow-hidden rounded-2xl shadow-2xl border border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg flex items-center justify-center p-8">
+                        <img src="./public/mediumminds/1.png" alt="MediumMinds Presentation 1"
+                            class="absolute inset-0 w-full h-full object-cover slide1">
+                        <img src="./public/mediumminds/2.png" alt="MediumMinds Presentation 2"
+                            class="absolute inset-0 w-full h-full object-cover slide2">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divisions Section -->
+    <section id="divisions" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our Divisions</h2>
+                <p class="text-light-muted dark:text-dark-muted max-w-2xl mx-auto">Discover the four pillars of
+                    MediumMinds that drive our comprehensive digital solutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="division-card reveal" style="animation-delay: 0.1s;">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h3 class="text-xl font-bold mb-3">MediumMinds Studio</h3>
+                    <p class="text-sm text-light-muted dark:text-dark-muted">Creative production, branding, UI/UX
+                        design, and visual storytelling.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="division-card reveal" style="animation-delay: 0.2s;">
+                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="text-xl font-bold mb-3">MediumMinds Solutions</h3>
+                    <p class="text-sm text-light-muted dark:text-dark-muted">Strategic consulting, digital marketing,
+                        and business problem-solving.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="division-card reveal" style="animation-delay: 0.3s;">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="text-xl font-bold mb-3">MediumMinds Technologies</h3>
+                    <p class="text-sm text-light-muted dark:text-dark-muted">Software development, AI, automation, and
+                        robust web/mobile architectures.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="division-card reveal" style="animation-delay: 0.4s;">
+                    <div class="card-icon"><i class="fas fa-flask"></i></div>
+                    <h3 class="text-xl font-bold mb-3">MediumMinds Creative Lab</h3>
+                    <p class="text-sm text-light-muted dark:text-dark-muted">Experimental projects, R&D, and
+                        cutting-edge interactive experiences.</p>
+                </div>
+                <!-- Card 5 (New) -->
+                <div class="division-card reveal" style="animation-delay: 0.5s;">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="text-xl font-bold mb-3">MediumMinds for Trainings</h3>
+                    <p class="text-sm text-light-muted dark:text-dark-muted">Professional courses, interactive
+                        workshops,
+                        and comprehensive skill-building training programs.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 reveal" style="animation-delay: 0.6s;">
+                <a href="divisions.html" class="btn-secondary px-8 py-3">View Detailed Divisions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-24 bg-[#0d0d0f] border-y border-dark-border">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 text-white">Our Leadership</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Meet the minds behind MediumMinds.</p>
+            </div>
+
+            <!-- Responsive Grid up to 4 columns -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+
+                <!-- Team Member 1 -->
+                <div
+                    class="bg-[#141416] rounded-2xl p-8 text-center group reveal transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,87,34,0.1)]">
+                    <div
+                        class="relative w-40 h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-transparent group-hover:border-[#ff5722] transition-colors duration-300">
+                        <img src="./public/team/umar.jpeg" alt="Umar Farooq - CEO"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+
+                        <!-- Social Icons Overlay -->
+                        <div
+                            class="absolute bottom-0 left-0 w-full bg-black/70 py-3 flex justify-center gap-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-[#ff5722] text-xs font-bold uppercase tracking-wider mb-2">Executive Director</p>
+                    <h3 class="text-white text-2xl font-bold">Umar Farooq</h3>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-[#141416] rounded-2xl p-8 text-center group reveal transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,87,34,0.1)]"
+                    style="animation-delay: 0.1s;">
+                    <div
+                        class="relative w-40 h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-transparent group-hover:border-[#ff5722] transition-colors duration-300">
+                        <img src="./public/team/abdullah.jpeg" alt="Abdullah - Director"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+
+                        <!-- Social Icons Overlay -->
+                        <div
+                            class="absolute bottom-0 left-0 w-full bg-black/70 py-3 flex justify-center gap-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-[#ff5722] text-xs font-bold uppercase tracking-wider mb-2">Director</p>
+                    <h3 class="text-white text-2xl font-bold">Abdullah Orakzai</h3>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="bg-[#141416] rounded-2xl p-8 text-center group reveal transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,87,34,0.1)]"
+                    style="animation-delay: 0.2s;">
+                    <div
+                        class="relative w-40 h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-transparent group-hover:border-[#ff5722] transition-colors duration-300">
+                        <img src="./public/team/uzair.jpeg" alt="Muhammad Uzair - MERN Stack Developer"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+
+                        <!-- Social Icons Overlay -->
+                        <div
+                            class="absolute bottom-0 left-0 w-full bg-black/70 py-3 flex justify-center gap-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-[#ff5722] text-xs font-bold uppercase tracking-wider mb-2">MERN Stack Developer</p>
+                    <h3 class="text-white text-2xl font-bold">Muhammad Uzair</h3>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="bg-[#141416] rounded-2xl p-8 text-center group reveal transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,87,34,0.1)]"
+                    style="animation-delay: 0.3s;">
+                    <div
+                        class="relative w-40 h-40 lg:w-48 lg:h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-transparent group-hover:border-[#ff5722] transition-colors duration-300">
+                        <img src="./public/team/social_media_manager.jpeg" alt="Ihtashal Ul Haq - Social Media Manager"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+
+                        <!-- Social Icons Overlay -->
+                        <div
+                            class="absolute bottom-0 left-0 w-full bg-black/70 py-3 flex justify-center gap-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-linkedin text-lg"></i></a>
+                            <a href="#" class="text-white hover:text-[#ff5722] transition-colors"><i
+                                    class="fab fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-[#ff5722] text-xs font-bold uppercase tracking-wider mb-2">Social Media Manager</p>
+                    <h3 class="text-white text-2xl font-bold">Ihtashal Ul Haq</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-24">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Previous Work & Projects</h2>
+                <p class="text-light-muted dark:text-dark-muted max-w-2xl mx-auto">Explore our portfolio of successful
+                    collaborations and innovative solutions.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="./public/projects/caripd.png"
+                            alt="Collective Alliance for the Rights of Indigenous Persons with Disabilities"
+                            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold text-white mb-2">Collective Alliance for the Rights of Indigenous
+                            Persons with Disabilities</h3>
+                        <p class="text-sm text-gray-300">Web Development</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card reveal" style="animation-delay: 0.1s;">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="./public/projects/yado.png" alt="Youth Awareness and Development Organization (YADO)"
+                            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold text-white mb-2">Youth Awareness and Development Organization
+                            (YADO)</h3>
+                        <p class="text-sm text-gray-300">Digital Solutions</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card reveal" style="animation-delay: 0.2s;">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="./public/projects/pdmission.png" alt="Pak Development Mission (PDM)"
+                            class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold text-white mb-2">Pak Development Mission (PDM)</h3>
+                        <p class="text-sm text-gray-300">Web & Tech Partnership</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forms Section -->
+    <section id="contact"
+        class="py-24 bg-light-card dark:bg-dark-card border-y border-light-border dark:border-dark-border">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Get In Touch</h2>
+                <p class="text-light-muted dark:text-dark-muted max-w-2xl mx-auto">Whether you want to start a project,
+                    apply for a job, or collaborate, we're here for you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="form-container reveal flex flex-col h-full">
+                    <h3 class="text-2xl font-bold mb-6">Contact Us</h3>
+                    <form id="contactForm" class="flex flex-col flex-grow space-y-4">
+                        <div id="contact-msg" class="hidden p-4 rounded-md mb-4 font-medium"></div>
+                        <div>
+                            <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                for="contact-name">Name</label>
+                            <input type="text" id="contact-name" name="name" required class="form-input">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                for="contact-email">Email</label>
+                            <input type="email" id="contact-email" name="email" required class="form-input">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="4" required
+                                class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn-form-submit">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Registration / Collaboration Form -->
+                <div class="form-container reveal flex flex-col h-full" style="animation-delay: 0.2s;">
+                    <h3 class="text-2xl font-bold mb-6">Collaboration & Registration</h3>
+                    <form id="appForm" class="flex flex-col flex-grow space-y-4">
+                        <div id="app-msg" class="hidden p-4 rounded-md mb-4 font-medium"></div>
+                        <div>
+                            <label class="block text-sm text-light-muted dark:text-dark-muted mb-1" for="app-name">Full
+                                Name</label>
+                            <input type="text" id="app-name" name="full_name" required class="form-input">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                    for="app-email">Email</label>
+                                <input type="email" id="app-email" name="email" required class="form-input">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                    for="app-phone">Phone</label>
+                                <input type="tel" id="app-phone" name="phone" required class="form-input">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                for="app-type">Type</label>
+                            <select id="app-type" name="type" required class="form-input">
+                                <option value="">Select an option</option>
+                                <option value="Collaboration">Collaboration</option>
+                                <option value="MOU">MOU</option>
+                                <option value="Job">Job / Position</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-light-muted dark:text-dark-muted mb-1"
+                                for="app-message">Message / Details</label>
+                            <textarea id="app-message" name="message" rows="3" required class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn-form-submit">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24">
+        <div class="container mx-auto px-6 md:px-12 max-w-4xl">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div
+                    class="faq-item reveal bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-lg overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold">
+                        What services does MediumMinds offer?
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-light-muted dark:text-dark-muted">
+                        We offer a comprehensive suite of digital services across four divisions: Studio (design &
+                        branding), Solutions (marketing & consulting), Technologies (software & AI), and Creative Lab
+                        (R&D).
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item reveal bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-lg overflow-hidden"
+                    style="animation-delay: 0.1s;">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold">
+                        Do you work with startups or enterprise clients?
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-light-muted dark:text-dark-muted">
+                        Both! Our scalable team structure allows us to handle specialized rapid-prototyping for startups
+                        as well as robust, enterprise-grade application development for large organizations.
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item reveal bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-lg overflow-hidden"
+                    style="animation-delay: 0.2s;">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center font-bold">
+                        How can I join MediumMinds?
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-light-muted dark:text-dark-muted">
+                        You can apply via the Registration & Collaboration form in the Contact section above. Select
+                        "Job / Position" as the type, and we will get back to you.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-primary text-white text-center">
+        <div class="container mx-auto px-6 md:px-12 reveal">
+            <h2 class="text-4xl md:text-5xl font-bold mb-8">Let’s turn your ideas into reality.</h2>
+            <a href="#contact"
+                class="inline-block bg-white text-primary font-bold py-4 px-10 rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)]">
+                Start a Project
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light-card dark:bg-dark-card border-t border-light-border dark:border-dark-border pt-16 pb-8">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img id="footer-logo-img" src="./public/logos/darklogo.png" alt="MediumMinds Logo" class="h-8">
+                        <span class="font-bold text-xl tracking-tight">MediumMinds</span>
+                    </div>
+                    <p class="text-light-muted dark:text-dark-muted max-w-sm">
+                        Connecting Ideas, Technology and Creative Minds to build the digital future.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-light-muted dark:text-dark-muted">
+                        <li><a href="#home" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#divisions" class="hover:text-primary transition-colors">Divisions</a></li>
+                        <li><a href="#work" class="hover:text-primary transition-colors">Work</a></li>
+                        <li><a href="careers.html" class="hover:text-primary transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-light-muted dark:text-dark-muted">
+                        <li><a href="mailto:info@mediumminds.com">info@mediumminds.com</a></li>
+                        <li>+92 312 9424445</li>
+                        <li class="flex gap-4 mt-4">
+                            <a href="#" class="text-xl hover:text-primary transition-colors"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/mediumminds/" target="_blank"
+                                class="text-xl hover:text-primary transition-colors"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/medium.minds?igsh=OHZqdnRiYXBmMjlx&utm_source"
+                                target="_blank" class="text-xl hover:text-primary transition-colors"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="text-center text-light-muted dark:text-dark-muted text-sm pt-8 border-t border-light-border dark:border-dark-border">
+                &copy; <span id="year"></span> MediumMinds. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

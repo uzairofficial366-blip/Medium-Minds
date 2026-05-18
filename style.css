@@ -1,0 +1,97 @@
+/* Custom CSS Styles */
+
+/* Utility classes for buttons */
+.btn-primary {
+    background-color: #FF5E2C;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+.btn-primary:hover {
+    background-color: #e04c1f;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 94, 44, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #FF5E2C;
+    color: #FF5E2C;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+.btn-secondary:hover {
+    background-color: #FF5E2C;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.nav-link {
+    @apply text-sm font-medium hover:text-primary transition-colors duration-300 relative;
+}
+.nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+}
+.nav-link:hover::after {
+    @apply w-full;
+}
+
+.mobile-nav-link {
+    @apply block w-full text-center py-2 text-lg font-medium hover:text-primary transition-colors;
+}
+
+/* Form Inputs */
+.form-input {
+    @apply w-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-300;
+}
+
+/* Division Cards */
+.division-card {
+    @apply bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border rounded-2xl p-8 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(255,94,44,0.1)] relative overflow-hidden;
+}
+.division-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 bg-primary transform scale-x-0 transition-transform duration-500 origin-left;
+}
+.division-card:hover::before {
+    @apply scale-x-100;
+}
+.card-icon {
+    @apply w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-2xl mb-6 transition-all duration-300;
+}
+.division-card:hover .card-icon {
+    @apply bg-primary text-white;
+}
+
+/* Project Cards */
+.project-card {
+    @apply relative rounded-2xl overflow-hidden group cursor-pointer border border-light-border dark:border-dark-border;
+}
+.project-overlay {
+    @apply absolute inset-0 bg-black/80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 text-center transform translate-y-4 group-hover:translate-y-0;
+}
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FAQ */
+.faq-content {
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
